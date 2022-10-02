@@ -43,6 +43,22 @@ const ScanScreen = ({ navigation }) => {
             .then((json) => setDrone(json))
     }
 
+    const patchDroneToSend = async () => {
+        const response = await fetch(urlScanned, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                state: 'En Location',
+            }),
+            headers: {
+                'content-type': 'application/json; charset=UTF-8',
+                'Authorization': `Bearer ${user.token}`
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+        setTempState('En Location');
+    }
+
     const patchDroneToStock = async () => {
         const response = await fetch(urlScanned, {
             method: 'PATCH',
@@ -104,9 +120,35 @@ const ScanScreen = ({ navigation }) => {
             {drone.state ?
                 <>
                     <Text style={styles.textNameDrone}>{drone.name_d}</Text>
-                    <Text style={styles.textState}>État du drone : <Text style={checkIfTempState(drone.state) == 'En Stock' ? styles.textStateDrone : styles.textStateDroneUnavailable && drone.state == 'En Location' ? styles.textStateDroneResa : styles.textStateDroneUnavailable}>{checkIfTempState(drone.state)}</Text></Text>
+                    <Text style={styles.textState}>État du drone : <Text style={checkIfTempState(drone.state) == 'En Stock' ? styles.textStateDrone
+                    : styles.textStateDroneUnavailable && drone.state == 'En Location' ? styles.textStateDroneResa
+                    : styles.textStateDroneUnavailable}>{checkIfTempState(drone.state)}</Text></Text>
 
                     <View style={styles.containerBtn}>
+                    {checkIfTempState(drone.state) == 'En Stock' ?
+                            <TouchableOpacity
+                            style={styles.btnGoToSend}
+                            onPress={patchDroneToSend}
+                            underlayColor='#fff'>
+                            <Text style={styles.textBtnGoTo} color={'white'} >Go LOC</Text>
+                            </TouchableOpacity>
+                        :
+                            <TouchableOpacity
+                                style={styles.btnGoToStock}
+                                onPress={patchDroneToStock}
+                                underlayColor='#fff'>
+                                <Text style={styles.textBtnGoTo} color={'white'} >Go STOCK</Text>
+                            </TouchableOpacity>
+                        }
+                            <TouchableOpacity
+                                style={styles.btnGoToSAV}
+                                onPress={patchDroneToSAV}
+                                underlayColor='#fff'>
+                                <Text style={styles.textBtnGoTo} color={'white'} >Go SAV</Text>
+                            </TouchableOpacity>
+                    </View>
+
+                    {/* <View style={styles.containerBtn}>
                         {checkIfTempState(drone.state) == 'En Stock' ?
                             <TouchableOpacity
                                 style={styles.btnGoToSAV}
@@ -131,7 +173,7 @@ const ScanScreen = ({ navigation }) => {
                                 underlayColor='#fff'>
                                 <Text style={styles.textBtnGoTo}>Entrée en stock</Text>
                             </TouchableOpacity>
-                        }</View>
+                        }</View> */}
 
                     <TouchableOpacity
                         style={styles.btnScanNewItem}>
@@ -170,8 +212,15 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     containerBtn: {
-        // flexDirection: "row",
+        flexDirection: "row",
         alignSelf: "center"
+    },
+    btnGoToSend: {
+        alignSelf: "center",
+        padding: 10,
+        margin: 10,
+        borderRadius: 5,
+        backgroundColor: "orange",
     },
     btnGoToStock: {
         alignSelf: "center",

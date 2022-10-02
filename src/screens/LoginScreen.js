@@ -26,11 +26,9 @@ const LoginScreen = () => {
         })
         .then(res => {
             setUser(res.data)
-            setIsLoading(false)
         })
         .catch(e => {
-            alert(e.message)
-            setIsLoading(false)
+            alert('Identifiants incorrects')
         })
     }
  

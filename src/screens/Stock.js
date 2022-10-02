@@ -44,6 +44,23 @@ const StockPage = () =>{
         setModalData(item);
         setModalVisible(true);
     }
+
+    const patchDroneToSend = async (droneId) => {
+        const response = await fetch(`${BASE_URL}/drones/${droneId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                state: 'En Location',
+            }),
+            headers: {
+                'content-type': 'application/json; charset=UTF-8',
+                'Authorization': `Bearer ${user.token}`
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+        setTempState('En Location');
+        updateState(droneId, 'En Location');
+    }
     
     const patchDroneToStock = async (droneId) => {
         const response = await fetch(`${BASE_URL}/drones/${droneId}`, {
@@ -98,23 +115,30 @@ const StockPage = () =>{
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Text style={styles.textDroneNameModal}>{modalData.name_d}</Text>
-                        <Text style={styles.textStateModal}><Text style={checkIfTempState(modalData.state) == 'En Stock' ? styles.textStateDrone : styles.textStateDroneUnavailable && modalData.state == 'En Location' ? styles.textStateDroneResa : styles.textStateDroneUnavailable}>{checkIfTempState(modalData.state)}</Text></Text>
+                        <Text style={styles.textStateModal}>Statut : <Text style={checkIfTempState(modalData.state) == 'En Stock' ? styles.textStateDrone : styles.textStateDroneUnavailable && modalData.state == 'En Location' ? styles.textStateDroneResa : styles.textStateDroneUnavailable}>{checkIfTempState(modalData.state)}</Text></Text>
                         <View style={styles.containerBtn}>
-                        {checkIfTempState(modalData.state) !== 'En Stock' ?
+                        {checkIfTempState(modalData.state) == 'En Stock' ?
                             <TouchableOpacity
-                            style={[styles.button, styles.buttonToStock]}
+                            style={[styles.button, styles.buttonToSend]}
+                            onPress={() => patchDroneToSend(modalData._id)}
+                            underlayColor='#fff'>
+                            <Text style={styles.textStyle}>LOCATION</Text>
+                            </TouchableOpacity>
+                        :
+                            <TouchableOpacity
+                                style={[styles.button, styles.buttonToStock]}
                                 onPress={() => patchDroneToStock(modalData._id)}
                                 underlayColor='#fff'>
-                                <Text style={styles.textStyle}>Entrée en stock</Text>
+                                <Text style={styles.textStyle}>STOCK</Text>
                             </TouchableOpacity>
-                            :
+                        }
                             <TouchableOpacity
                                 style={[styles.button, styles.buttonToSAV]}
                                 onPress={() => patchDroneToSAV(modalData._id)}
                                 underlayColor='#fff'>
-                                <Text style={styles.textStyle}>Entrée au SAV</Text>
+                                <Text style={styles.textStyle}>SAV</Text>
                             </TouchableOpacity>
-                        }</View>
+                        </View>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}
@@ -179,6 +203,9 @@ const styles = StyleSheet.create({
             },
             buttonClose:{
                 backgroundColor: "#2196F3",
+            },
+            buttonToSend:{
+                backgroundColor: "orange",
             },
             buttonToSAV:{
                 backgroundColor: "firebrick",
