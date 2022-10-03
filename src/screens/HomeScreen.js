@@ -1,12 +1,10 @@
-import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from "react-native";
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useAuth } from "../context/AuthContext";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
  
 const HomeScreen = ({ navigation }) => {
-
     const Stack = createNativeStackNavigator();
+
     const [user, setUser] = useAuth()
 
     const goToScan = () => {
@@ -27,33 +25,34 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-        <Text style={ styles.titleSky }>SKY <Text style={ styles.titleBlack }>DR</Text>O<Text style={ styles.titleBlack }>NE</Text></Text>
-        <Text style={ styles.welcolmeUser }>Bienvenue {user.user.firstName_u} {user.user.lastName_u} !</Text>
+            <Text style={ styles.titleSky }>SKY <Text style={ styles.titleBlack }>DR</Text>O<Text style={ styles.titleBlack }>NE</Text></Text>
+            <Text style={ styles.welcolmeUser }>Bienvenue {user.user.firstName_u} {user.user.lastName_u} !</Text>
         
-        <View style={styles.containerBtn}>
-            <TouchableOpacity
-                style={styles.loginScreenButton}
-                onPress={goToScan}
-                underlayColor='#fff'>
-                <Image style={styles.imagestyle} source={require('../../assets/img/newImgLogo.png')} />
-                <Text style={styles.textBtn}>scanner un drone</Text>
-            </TouchableOpacity>
+            <ScrollView
+                style={styles.containerBtn}>
+                    <TouchableOpacity
+                        style={styles.loginScreenButton}
+                        onPress={goToScan}
+                        underlayColor='#fff'>
+                        <Image style={styles.imagestyle} source={require('../../assets/img/newImgLogo.png')} />
+                        <Text style={styles.textBtn}>scanner un drone</Text>
+                    </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.loginScreenButton}
-                onPress={goToStock}
-                underlayColor='#fff'>
-                <Image style={styles.imagestyle} source={require('../../assets/img/gestionTravelbook.png')} />
-                <Text style={styles.textBtn}>voir le stock</Text>
-            </TouchableOpacity>
-        </View>
+                    <TouchableOpacity
+                        style={styles.loginScreenButton}
+                        onPress={goToStock}
+                        underlayColor='#fff'>
+                        <Image style={styles.imagestyle} source={require('../../assets/img/gestionTravelbook.png')} />
+                        <Text style={styles.textBtn}>voir le stock</Text>
+                    </TouchableOpacity>
 
-        <TouchableOpacity
-            style={styles.logoutScreenButton}
-            onPress={logout}
-            underlayColor='#fff'>
-            <Text style={styles.textBtnLogout}>se déconnecter</Text>
-        </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.logoutScreenButton}
+                        onPress={logout}
+                        underlayColor='#fff'>
+                        <Text style={styles.textBtnLogout}>se déconnecter</Text>
+                    </TouchableOpacity>
+            </ScrollView>
     </View>
   );
 }
@@ -67,11 +66,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     containerBtn:{
-        flexDirection: "column"
+        flexDirection: "column",
     },
     imagestyle:{
-        width: 85,
-        height: 85,
+        width: 65,
+        height: 65,
         alignSelf: "center",
     },
     titleSky: {
@@ -88,8 +87,8 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     welcolmeUser:{
-        marginBottom: 20,
-        marginTop: 10,
+        marginBottom: 10,
+        marginTop: 5,
         padding: 10,
         color: "#3caae9",
         letterSpacing: 2,
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     logoutScreenButton:{
         padding: 10,
         marginTop: 25,
-        marginBottom: 5,
+        marginBottom: 25,
         backgroundColor:'#e5181d',
         borderRadius:20,
         borderWidth: 1,
