@@ -1315,38 +1315,6 @@
     "resolve-from" "^5.0.0"
     "sucrase" "^3.20.0"
 
-"@expo/ngrok-bin-darwin-arm64@2.3.40":
-  "integrity" "sha512-Zij81v/bIsVBvgXgYS71xbi/3lqKfVEfr7rId8BsHO3Ec1nQcp/I+729W3KX9PUHzWlXCLxOKZ3uF4jL/TcNbg=="
-  "resolved" "https://registry.npmjs.org/@expo/ngrok-bin-darwin-arm64/-/ngrok-bin-darwin-arm64-2.3.40.tgz"
-  "version" "2.3.40"
-
-"@expo/ngrok-bin@2.3.40":
-  "integrity" "sha512-40GK1CY1QLPDHSQS7Fd36CJeZgMwtbeezkgp4tzfExVRVtWw30jOBCsM7TBB9IqEmmX7C/XwG47scMQHCnMw8A=="
-  "resolved" "https://registry.npmjs.org/@expo/ngrok-bin/-/ngrok-bin-2.3.40.tgz"
-  "version" "2.3.40"
-  optionalDependencies:
-    "@expo/ngrok-bin-darwin-arm64" "2.3.40"
-    "@expo/ngrok-bin-darwin-x64" "2.3.40"
-    "@expo/ngrok-bin-freebsd-ia32" "2.3.40"
-    "@expo/ngrok-bin-freebsd-x64" "2.3.40"
-    "@expo/ngrok-bin-linux-arm" "2.3.40"
-    "@expo/ngrok-bin-linux-arm64" "2.3.40"
-    "@expo/ngrok-bin-linux-ia32" "2.3.40"
-    "@expo/ngrok-bin-linux-x64" "2.3.40"
-    "@expo/ngrok-bin-sunos-x64" "2.3.40"
-    "@expo/ngrok-bin-win32-ia32" "2.3.40"
-    "@expo/ngrok-bin-win32-x64" "2.3.40"
-
-"@expo/ngrok@^4.1.0":
-  "integrity" "sha512-PrtWxBt/SnOF1jZkf7oWznhEPFrmYKKeJPLVRKnEBd/y4eUYfoiNIXOzflIzhdrMubjWVI+pFuPJ6nkjVL95/Q=="
-  "resolved" "https://registry.npmjs.org/@expo/ngrok/-/ngrok-4.1.0.tgz"
-  "version" "4.1.0"
-  dependencies:
-    "@expo/ngrok-bin" "2.3.40"
-    "got" "^11.5.1"
-    "uuid" "^3.3.2"
-    "yaml" "^1.10.0"
-
 "@expo/osascript@2.0.33":
   "integrity" "sha512-FQinlwHrTlJbntp8a7NAlCKedVXe06Va/0DSLXRO8lZVtgbEMrYYSUZWQNcOlNtc58c2elNph6z9dMOYwSo3JQ=="
   "resolved" "https://registry.npmjs.org/@expo/osascript/-/osascript-2.0.33.tgz"
@@ -5620,7 +5588,7 @@
     "merge2" "^1.3.0"
     "slash" "^3.0.0"
 
-"got@^11.1.4", "got@^11.5.1":
+"got@^11.1.4":
   "integrity" "sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ=="
   "resolved" "https://registry.npmjs.org/got/-/got-11.8.5.tgz"
   "version" "11.8.5"
@@ -9414,6 +9382,19 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
+"react-native-iphone-x-helper@^1.0.3":
+  "integrity" "sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg=="
+  "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
+  "version" "1.3.1"
+
+"react-native-keyboard-aware-scroll-view@^0.9.5":
+  "integrity" "sha512-XwfRn+T/qBH9WjTWIBiJD2hPWg0yJvtaEw6RtPCa5/PYHabzBaWxYBOl0usXN/368BL1XktnZPh8C2lmTpOREA=="
+  "resolved" "https://registry.npmjs.org/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.9.5.tgz"
+  "version" "0.9.5"
+  dependencies:
+    "prop-types" "^15.6.2"
+    "react-native-iphone-x-helper" "^1.0.3"
+
 "react-native-loading-spinner-overlay@^3.0.0":
   "integrity" "sha512-SmRCmfY795/Jxm9JHoyE0I6ry9uBT7m/RYAPNm0vlfZr9dz39HlzIt4h0MvcZvgSmUjEkHm6DzWnuWSO1yKr4A=="
   "resolved" "https://registry.npmjs.org/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-3.0.0.tgz"
@@ -9467,7 +9448,7 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>=0.57", "react-native@>=0.60.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.57", "react-native@>=0.60.0", "react-native@>=0.64.0-rc.0 || 0.0.0-*", "react-native@0.64.3":
   "integrity" "sha512-2OEU74U0Ek1/WeBzPbg6XDsCfjF/9fhrNX/5TFgEiBKd5mNc9LOZ/OlMmkb7iues/ZZ/oc51SbEfLRQdcW0fVw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.3.tgz"
   "version" "0.64.3"
@@ -11927,11 +11908,6 @@
   "integrity" "sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A=="
   "resolved" "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz"
   "version" "4.0.0"
-
-"yaml@^1.10.0":
-  "integrity" "sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg=="
-  "resolved" "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
-  "version" "1.10.2"
 
 "yargs-parser@^13.1.2":
   "integrity" "sha512-3lbsNRf/j+A4QuSZfDRA7HRSfWrzO0YjqTJd5kjAq37Zep1CEgaYmrH9Q3GwPiB9cHyd1Y1UwggGhJGoxipbzg=="
