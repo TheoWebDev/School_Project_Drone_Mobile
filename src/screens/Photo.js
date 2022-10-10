@@ -130,21 +130,21 @@ const ScanScreen = ({ navigation }) => {
                             style={styles.btnGoToSend}
                             onPress={patchDroneToSend}
                             underlayColor='#fff'>
-                            <Text style={styles.textBtnGoTo} color={'white'} >LOCATION</Text>
+                            <Text style={styles.textBtnGoTo} color={'white'} >Mettre en Location</Text>
                             </TouchableOpacity>
                         :
                             <TouchableOpacity
                                 style={styles.btnGoToStock}
                                 onPress={patchDroneToStock}
                                 underlayColor='#fff'>
-                                <Text style={styles.textBtnGoTo} color={'white'} >STOCK</Text>
+                                <Text style={styles.textBtnGoTo} color={'white'} >Mettre en Stock</Text>
                             </TouchableOpacity>
                         }
                             <TouchableOpacity
                                 style={styles.btnGoToSAV}
                                 onPress={patchDroneToSAV}
                                 underlayColor='#fff'>
-                                <Text style={styles.textBtnGoTo} color={'white'} >SAV</Text>
+                                <Text style={styles.textBtnGoTo} color={'white'} >Mettre en SAV</Text>
                             </TouchableOpacity>
                     </View>
 

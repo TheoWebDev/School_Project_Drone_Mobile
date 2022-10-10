@@ -147,7 +147,7 @@ const StockPage = () => {
                     onPress={() => patchDroneToSend(modalData._id)}
                     underlayColor="#fff"
                   >
-                    <Text style={styles.textStyle}>LOCATION</Text>
+                    <Text style={styles.textStyle}>Mettre en Location</Text>
                   </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
@@ -155,7 +155,7 @@ const StockPage = () => {
                     onPress={() => patchDroneToStock(modalData._id)}
                     underlayColor="#fff"
                   >
-                    <Text style={styles.textStyle}>STOCK</Text>
+                    <Text style={styles.textStyle}>Mettre en Stock</Text>
                   </TouchableOpacity>
                 )}
                 <TouchableOpacity
@@ -163,7 +163,7 @@ const StockPage = () => {
                   onPress={() => patchDroneToSAV(modalData._id)}
                   underlayColor="#fff"
                 >
-                  <Text style={styles.textStyle}>SAV</Text>
+                  <Text style={styles.textStyle}>Mettre en SAV</Text>
                 </TouchableOpacity>
               </View>
               <Pressable
